@@ -1,4 +1,11 @@
-__pycache__/
-*.pyc
-venv/
-message.txt
+# Logs
+*.log
+
+# Coverage / testing
+htmlcov/
+.coverage
+.cache
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
