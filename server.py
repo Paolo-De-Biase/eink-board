@@ -82,6 +82,16 @@ PAGE = """
 
 app = Flask(__name__)
 
+@app.get("/epaper/message.txt")
+def message_txt():
+    # prevent CDN/proxy caching, always serve fresh
+    from flask import Response
+    return Response(read_current(), mimetype="text/plain; charset=utf-8", headers={
+        "Cache-Control": "no-store, max-age=0",
+        "Pragma": "no-cache",
+    })
+
+
 def read_current():
     return STORE.read_text(encoding="utf-8") if STORE.exists() else ""
 
